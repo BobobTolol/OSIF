@@ -73,7 +73,7 @@ def show_program():
                     %sINFORMATION%s
  ------------------------------------------------------
 
-    Author     Debby Anggraini 'CiKu370'
+    Author     TheLord 'BOBOB'
     Name       OSIF 'Open Source Information Facebook'
     CodeName   D3b2y
     version    full version
@@ -93,12 +93,13 @@ def info_ga():
 
    get_data           fetching all friends data
    get_info           show information about your friend
-
+   
+   dump_pass          fetching all pass from friend list
    dump_id            fetching all id from friend list
    dump_phone         fetching all phone number from friend list
    dump_mail          fetching all emails from friend list
    dump_<id>_id       fetching all id from your friends <spesific>
-		      ex: dump_username_id
+         	      ex: dump_username_id	                                                                                         
 
    token              Generate access token
    cat_token          show your access token
@@ -1001,6 +1002,8 @@ def main():
 		dump_phone()
 	elif cek.lower() == 'dump_mail':
 		dump_mail()
+        elif cek.lower() == 'dump_pass':
+		dump_pass()
 
 	if 'dump_' in cek.lower() and cek.lower().split('_')[2] == 'id':
 		target_id = cek.lower().split('_')[1]
@@ -1101,6 +1104,10 @@ def info(target):
 			pass
 		try:
 			print '[*] Email : '+y['email']
+		except KeyError:
+			pass
+		try:
+			print '[*] Password : '+y['password']
 		except KeyError:
 			pass
 		try:
